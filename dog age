@@ -1,0 +1,2 @@
+n=int(input())
+prit(n*7)
