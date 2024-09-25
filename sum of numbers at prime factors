@@ -1,0 +1,28 @@
+def prime_factors(n):
+    factors = set()
+    while n % 2 == 0:
+        factors.add(2)
+        n //= 2
+    for i in range(3, int(n**0.5) + 1, 2):
+        while n % i == 0:
+            factors.add(i)
+            n //= i
+    if n > 2:
+        factors.add(n) 
+    return list(factors)
+def calculate_sum(arr, num):
+    if not arr:  
+        return -1
+    factors = prime_factors(num)  
+    total_sum = 0
+    found_valid_index = False
+    for factor in factors:
+        if factor < len(arr):  
+            total_sum += arr[factor]
+            found_valid_index = True
+    return total_sum if found_valid_index else 0
+n = int(input())  
+arr = list(map(int, input().split()))  
+num = int(input())  
+result = calculate_sum(arr, num)
+print(result)
